@@ -1,0 +1,42 @@
+body{
+    background-color: rgb(217, 220, 232);
+    padding: 15px;
+    text-align: center;
+}
+
+header {
+    background-color: blanchedalmond;
+    padding: 25px;  
+    text-align: center;
+}
+nav{
+    background-color: aliceblue;
+    padding: 15px;
+    text-align: center;
+}
+nav a{
+    background-color: bisque;
+    margin: 25px;
+    text-align: center;
+    color: black;
+    text-decoration: double;
+    padding: 10px;
+}
+article img{
+    width: 450px;
+    height: auto;
+}
+.store_ban{
+    position: relative;
+}
+.store_ban h1{
+    position:absolute;
+    width: 100%;
+    top: 30%;
+    text-align: center;
+}
+.store_ban img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
