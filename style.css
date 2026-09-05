@@ -22,10 +22,6 @@ nav a{
     text-decoration: double;
     padding: 10px;
 }
-article img{
-    width: 450px;
-    height: auto;
-}
 .store_ban{
     position: relative;
 }
