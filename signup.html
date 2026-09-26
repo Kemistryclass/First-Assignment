@@ -20,7 +20,7 @@
             </div>
         </header>
          <nav>
-            <a href="index.html">Home</a>
+            <a href="home.html">Home</a>
             <a href="2">About us</a>
             <a href="3">Shopping Cart</a>
             <a href="4">Product</a>
@@ -28,25 +28,25 @@
             <a href="6">Contact Us</a>
         </nav>
         <main>
-    <form>
+    <form onsubmit="return validateForm()" novalidate>
   <div class="mb-3">
     <label for="username" class="form-label">Username:</label>
-    <input type="text" class="form-control" id="username" aria-describedby="username">
+    <input type="text" class="form-control" id="username" aria-describedby="username" onfocusout="validate(this)">
     
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Email:</label>
-    <input type="email" class="form-control" id="email">
+    <input type="email" class="form-control" id="email" onfocusout="validate(this)">
     </div>
 
   <div class="mb-3">
     <label for="password" class="form-label">Password:</label>
-    <input type="password" class="form-control" id="password">
+    <input type="password" class="form-control" id="password" onfocusout="validate(this)">
     </div>
 
   <div class="mb-3">
   <label for="confirmpassword" class="form-label">Confirm Password</label>
-    <input type="password" class="form-control" id="confirmpassword">
+    <input type="password" class="form-control" id="confirmpassword" onfocusout="validate(this)" >
   </div>
   <button type="submit" class="btn btn-primary">SignUp</button>
 </form>
@@ -56,5 +56,47 @@
             <a href="#">Cookies and Privacy Policy</a>
             <p>Copyright 2026. LaptopGalore</p>
         </footer>
+        <script>
+          function validate(obj){
+            if(obj.value.trim() === ""){
+              obj.style.color ="red";
+              obj.style.borderColor ="red";
+              alert("Requires input")
+              return false;
+            }
+            if (obj.id === "email" && !obj.checkValidity()){
+              obj.style.color = "red";
+              obj.style.borderColor ="red";
+              alert("Entered wrong email");
+              return false
+            }
+            if(obj.id === "confirmpassword"){
+              if(obj.value !== document.getElementById("password").value){
+                obj.style.color="red";
+                obj.style.borderColor="red";
+                alert("Password is wrong fool")
+                return false;
+              }
+            }
+            obj.style.color ="";
+            obj.style.borderColor ="";
+            return true
+          }
+          function validateForm(){
+            let fields =["username","email","password","confirmpassword"];
+            let valid = true;
+
+            for(let id of fields){
+              if(!validate(document.getElementById(id)))
+              {valid=false;
+
+              }
+            }
+            if(valid){
+              alert("All fields are good");
+            }
+            return false;
+          }
+        </script>
 </body>
 </html>
