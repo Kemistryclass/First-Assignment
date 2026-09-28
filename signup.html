@@ -32,21 +32,26 @@
   <div class="mb-3">
     <label for="username" class="form-label">Username:</label>
     <input type="text" class="form-control" id="username" aria-describedby="username" onfocusout="validate(this)">
+     <div class="invalid-feedback" id="usernameError"></div>
     
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Email:</label>
     <input type="email" class="form-control" id="email" onfocusout="validate(this)">
+      <div class="invalid-feedback" id="emailError"></div>
     </div>
 
   <div class="mb-3">
     <label for="password" class="form-label">Password:</label>
     <input type="password" class="form-control" id="password" onfocusout="validate(this)">
+       <div class="invalid-feedback" id="passwordError"></div>
     </div>
 
   <div class="mb-3">
   <label for="confirmpassword" class="form-label">Confirm Password</label>
-    <input type="password" class="form-control" id="confirmpassword" onfocusout="validate(this)" >
+    <input type="password" class="form-control" id="confirmpassword" onfocusout="validate(this)">
+        <div class="invalid-feedback" id="confirmpasswordError"></div>
+      
   </div>
   <button type="submit" class="btn btn-primary">SignUp</button>
 </form>
@@ -61,25 +66,30 @@
             if(obj.value.trim() === ""){
               obj.style.color ="red";
               obj.style.borderColor ="red";
-              alert("Requires input")
+              document.getElementById(obj.id + "Error").textContent =" Required";
+                obj.classList.add("is-invalid")
               return false;
             }
             if (obj.id === "email" && !obj.checkValidity()){
               obj.style.color = "red";
               obj.style.borderColor ="red";
-              alert("Entered wrong email");
+           document.getElementById(obj.id + "Error").textContent =" Wrong Email";
+                obj.classList.add("is-invalid")
               return false
             }
             if(obj.id === "confirmpassword"){
               if(obj.value !== document.getElementById("password").value){
                 obj.style.color="red";
                 obj.style.borderColor="red";
-                alert("Password is wrong fool")
+              document.getElementById(obj.id + "Error").textContent =" Invalid";
+                obj.classList.add("is-invalid")
                 return false;
               }
             }
             obj.style.color ="";
             obj.style.borderColor ="";
+            obj.classList.remove("is-invalid");
+              document.getElementById(obj.id + "Error").textContent ="";
             return true
           }
           function validateForm(){
