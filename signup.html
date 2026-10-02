@@ -54,6 +54,7 @@
       
   </div>
   <button type="submit" class="btn btn-primary">SignUp</button>
+         <pre id="jsonOutput"></pre>
 </form>
 </main>
   <footer>
@@ -95,15 +96,16 @@
           function validateForm(){
             let fields =["username","email","password","confirmpassword"];
             let valid = true;
+            let json={};
 
             for(let id of fields){
               if(!validate(document.getElementById(id)))
               {valid=false;
-
               }
+                json[id]=document.getElementById(id).value;
             }
             if(valid){
-              alert("All fields are good");
+                  document.getElementById("jsonOutput").textContent = JSON.stringify(json, null,2);
             }
             return false;
           }
